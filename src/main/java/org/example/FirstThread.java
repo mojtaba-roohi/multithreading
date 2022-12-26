@@ -16,7 +16,7 @@ public class FirstThread implements Runnable {
         Random r=new Random();
         while (countDown-- > 0) {
             try {
-                Thread.sleep(r.nextInt(10000));
+                Thread.sleep(r.nextInt(5000));
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

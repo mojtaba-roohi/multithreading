@@ -9,11 +9,26 @@ import java.util.concurrent.Executors;
 public class Main {
     public static void main(String[] args) {
 
-        fixedThreadPool();
+        singleThreadPriority();
 
 //newThread();
     }
 
+
+    public static void singleThreadPriority() {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Thread first=new Thread(new FirstThread("first"));
+        Thread second=new Thread(new FirstThread("second"));
+        Thread third=new Thread(new FirstThread("third"));
+        first.setPriority(1);
+        second.setPriority(10);
+        third.setPriority(5);
+
+        executor.execute(first);
+        executor.execute(second);
+        executor.execute(third);
+
+    }
     public static void fixedThreadPool() {
         ExecutorService executor = Executors.newFixedThreadPool(2);
         executor.execute(new FirstThread("first"));
